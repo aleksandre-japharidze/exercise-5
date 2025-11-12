@@ -1,0 +1,40 @@
+function trimText(text: string) {
+    if (text === null) {
+        return "";
+    }
+
+    return text.trim();
+}
+
+function toUpperCase(text: string) {
+    if (text === null) {
+        return "";
+    }
+
+    return text.toUpperCase();
+}
+
+function censor(text: string) {
+    if (text === null) {
+        return "";
+    }
+    const censoredWords = ["job", "salary", "work", "interview", "school", "teacher", "lecture", "course", "class", "instructor", "principal", "homework", "lab", "exam", "test", "quiz", "project", "university"]
+    for (const word of censoredWords) {
+        text = text.replace(word, "*".repeat(word.length));
+    }
+    return text;
+}
+
+function prefix(text: string, prefix: string) {
+    if (text === null) {
+        return "";
+    } else if (prefix === null) {
+        return text;
+    }
+
+    return prefix + text;
+}
+
+console.log(trimText("   Hello World!   "))
+console.log(toUpperCase("hello world!"))
+console.log(censor("I am a job at a university. I am working hard to earn my salary."))
