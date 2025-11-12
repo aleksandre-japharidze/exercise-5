@@ -20,7 +20,7 @@ function censor(text: string) {
     }
     const censoredWords = ["job", "salary", "work", "interview", "school", "teacher", "lecture", "course", "class", "instructor", "principal", "homework", "lab", "exam", "test", "quiz", "project", "university"]
     for (const word of censoredWords) {
-        text = text.replace(word, "*".repeat(word.length));
+        text = text.replace(new RegExp(word, "gi"), "*".repeat(word.length));
     }
     return text;
 }
@@ -35,6 +35,16 @@ function prefix(text: string, prefix: string) {
     return prefix + text;
 }
 
-console.log(trimText("   Hello World!   "))
-console.log(toUpperCase("hello world!"))
-console.log(censor("I am a job at a university. I am working hard to earn my salary."))
+function processText(text: string, operations: ((text: string) => string)[]) {
+    for (const operation of operations) {
+        text = operation(text);
+    }
+
+    return text;
+}
+
+console.log(trimText("   Hello World!   "));
+console.log(toUpperCase("hello world!"));
+console.log(censor("I am a job at a university. I am working hard to earn my salary."));
+
+console.log(processText("Hello World! University and jobs!", [trimText, toUpperCase, censor, text => prefix(text, "Filtered: ")]));
