@@ -46,7 +46,7 @@ function processText(text: string, operations: ((text: string) => string)[]) {
         return localString;
     }
 
-    console.log(localFunction("Hello World!"));
+    console.log(localFunction(localVariable));
 
     return text;
 }

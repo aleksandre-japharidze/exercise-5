@@ -7,14 +7,18 @@
     return text.Trim();
 }
 
+// Console.WriteLine(TrimText("   Hello World!   "));
+
 string ToUpperCase(string text)
 {
-    if (string.IsNullOrEmpty(text)) 
+    if (string.IsNullOrEmpty(text))
     {
         return string.Empty;
     }
     return text.ToUpper();
 }
+
+// Console.WriteLine(ToUpperCase("hello world!"));
 
 string Censor(string text)
 {
@@ -22,13 +26,15 @@ string Censor(string text)
     {
         return string.Empty;
     }
-    List<string> censoredWords = new List<string> { "job", "salary", "work", "interview", "school", "teacher", "lecture", "course", "class", "instructor", "principal", "homework", "lab", "exam", "test", "quiz", "project", "university"};
-    foreach (string word in censoredWords) 
+    List<string> censoredWords = new List<string> { "job", "salary", "work", "interview", "school", "teacher", "lecture", "course", "class", "instructor", "principal", "homework", "lab", "exam", "test", "quiz", "project", "university" };
+    foreach (string word in censoredWords)
     {
         text = text.Replace(word, "****", StringComparison.OrdinalIgnoreCase);
     }
     return text;
 }
+
+// Console.WriteLine(Censor("I am a job at a university. I am working hard to earn my salary."));
 
 string Prefix(string text, string prefix)
 {
@@ -44,6 +50,8 @@ string Prefix(string text, string prefix)
     return prefix + text;
 }
 
+// Console.WriteLine(Prefix("Hello World!", "Filtered: "));
+
 string ProcessText(string text, List<Func<string, string>> operations)
 {
     foreach (Func<string, string> operation in operations)
@@ -52,8 +60,8 @@ string ProcessText(string text, List<Func<string, string>> operations)
     }
 
     string localString = "ProcessText function is my safe haven!";
-    
-    string LocalFunction(string localString) 
+
+    string LocalFunction(string localString)
     {
         return localString;
     }
@@ -100,7 +108,7 @@ Func<string, string> CreatePrefixer(string prefix)
         if (string.IsNullOrEmpty(prefix))
         {
             return text;
-        } 
+        }
         else if (string.IsNullOrEmpty(text))
         {
             return string.Empty;
