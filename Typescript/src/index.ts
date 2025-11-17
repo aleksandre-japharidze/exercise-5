@@ -40,8 +40,18 @@ function processText(text: string, operations: ((text: string) => string)[]) {
         text = operation(text);
     }
 
+    var localVariable: string = "processText is my safe haven!";
+
+    function localFunction(localString: string) {
+        return localString;
+    }
+
+    console.log(localFunction("Hello World!"));
+
     return text;
 }
+
+console.log(processText("Hello World! University and jobs!", [trimText, toUpperCase, censor, text => prefix(text, "Filtered: ")]));
 
 // console.log(trimText("   Hello World!   "));
 // console.log(toUpperCase("hello world!"));
@@ -63,7 +73,7 @@ function createCensor(censoredWords: string[]) {
     }
 }
 
-console.log(processText("Hello World! University and jobs!", [createCensor(["job", "salary", "university", "work"])]));
+// console.log(processText("Hello World! University and jobs!", [createCensor(["job", "salary", "university", "work"])]));
 
 function createPrefix(prefix: string) {
     return (text: string) => {
@@ -77,4 +87,4 @@ function createPrefix(prefix: string) {
     }
 }
 
-console.log(processText("Hello World! University and jobs!", [createPrefix("Filtered: ")]));
+// console.log(processText("Hello World! University and jobs!", [createPrefix("Filtered: ")]));
